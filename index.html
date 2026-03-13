@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MindMetric</title>
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<nav class="navbar">
+
+<div class="logo">MindMetric</div>
+
+<ul class="nav-links">
+<li><a href="#">Home</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#assessment">Assessment</a></li>
+<li><a href="#insights">Insights</a></li>
+</ul>
+
+<div class="nav-right">
+<button id="loginBtn" onclick="window.location.href='login.html'">
+Login
+</button>
+
+
+<img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
+class="profile-icon"
+onclick="toggleMenu()">
+
+<div id="dropdown" class="dropdown">
+<p onclick="logout()">Logout</p>
+</div>
+
+</div>
+
+</nav>
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
+<div class="blob blob3"></div>
+
+<h1 class="hero-title">
+Understand Your Mind
+</h1>
+
+<p class="hero-subtitle">
+Answer 25 intelligent questions and discover your mental wellness instantly.
+</p>
+
+<button class="cta-button" onclick="startAssessment()">
+Start Assessment
+</button>
+
+</section>
+
+<!-- Why Mental Health Matters -->
+
+<section class="features reveal" id="about">
+
+<h2>Why Mental Health Matters</h2>
+
+<div class="feature-cards">
+
+<div class="card">
+<h3>Emotional Balance</h3>
+<p>Understand your emotional patterns and responses.</p>
+</div>
+
+<div class="card">
+<h3>Stress Awareness</h3>
+<p>Identify stress triggers early and manage them better.</p>
+</div>
+
+<div class="card">
+<h3>Self Understanding</h3>
+<p>Track your mental wellbeing and improve self-awareness.</p>
+</div>
+
+</div>
+
+</section>
+
+<!-- Notification -->
+
+<div id="notifyBar" class="notify-bar">
+Please login first to take the assessment
+</div>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
