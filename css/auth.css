@@ -1,0 +1,288 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+
+height:100vh;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:radial-gradient(circle at top,#1a1a2e,#0f0f1a);
+
+overflow:hidden;
+
+}
+
+/* animated gradient background */
+
+body::before{
+
+content:"";
+
+position:absolute;
+
+width:600px;
+height:600px;
+
+background:linear-gradient(135deg,#7f5af0,#00c6ff);
+
+filter:blur(200px);
+
+top:-200px;
+left:-200px;
+
+animation:moveBg 12s infinite alternate;
+
+}
+
+body::after{
+
+content:"";
+
+position:absolute;
+
+width:600px;
+height:600px;
+
+background:linear-gradient(135deg,#ff7ac6,#2cb67d);
+
+filter:blur(200px);
+
+bottom:-200px;
+right:-200px;
+
+animation:moveBg 14s infinite alternate;
+
+}
+
+@keyframes moveBg{
+
+from{transform:translate(0,0);}
+to{transform:translate(80px,80px);}
+
+}
+
+/* container */
+
+.auth-container{
+
+position:relative;
+z-index:2;
+
+}
+
+/* glass card */
+
+.auth-card{
+
+width:360px;
+
+padding:40px;
+
+border-radius:20px;
+
+background:rgba(255,255,255,0.06);
+
+backdrop-filter:blur(16px);
+
+border:1px solid rgba(255,255,255,0.08);
+
+text-align:center;
+
+animation:fadeIn 0.8s ease;
+
+}
+
+@keyframes fadeIn{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
+}
+
+.auth-card h2{
+
+margin-bottom:10px;
+
+font-size:28px;
+
+background:linear-gradient(90deg,#7f5af0,#00c6ff,#2cb67d);
+
+background-size:200%;
+
+background-clip:text;
+-webkit-background-clip:text;
+
+color:transparent;
+
+animation:titleGradient 6s linear infinite;
+
+}
+@keyframes titleGradient{
+
+0%{
+background-position:0%;
+}
+
+100%{
+background-position:200%;
+}
+
+}
+
+.auth-card p{
+
+color:#bbb;
+margin-bottom:25px;
+
+}
+
+/* floating input */
+
+.input-group{
+
+position:relative;
+margin-bottom:24px;
+
+}
+
+.input-group input{
+
+width:100%;
+
+padding:14px 14px;
+
+border:none;
+
+border-radius:10px;
+
+background:rgba(255,255,255,0.08);
+
+color:white;
+
+font-size:15px;
+
+outline:none;
+
+}
+
+/* label position */
+
+.input-group label{
+
+position:absolute;
+
+left:14px;
+top:14px;
+
+color:#aaa;
+
+font-size:14px;
+
+pointer-events:none;
+
+transition:0.25s ease;
+
+background:transparent;
+
+}
+
+/* move label up when typing */
+
+.input-group input:focus + label,
+.input-group input:not(:placeholder-shown) + label{
+
+top:-10px;
+
+left:4px;
+
+font-size:12px;
+
+color:#7f5af0;
+box-shadow:0 0 10px rgba(127,90,240,0.5);
+
+}
+/* button */
+
+.auth-btn{
+
+width:100%;
+
+padding:14px;
+
+border:none;
+
+border-radius:12px;
+
+font-size:16px;
+
+cursor:pointer;
+
+color:white;
+
+background:linear-gradient(120deg,#7f5af0,#00c6ff,#2cb67d);
+
+background-size:300%;
+
+transition:0.4s;
+
+position:relative;
+
+overflow:hidden;
+
+box-shadow:0 8px 25px rgba(127,90,240,0.4);
+
+}
+
+.auth-btn span{
+position:relative;
+z-index:2;
+}
+
+/* gradient animation */
+
+.auth-btn:hover{
+
+background-position:100%;
+
+transform:translateY(-3px);
+
+box-shadow:0 12px 30px rgba(127,90,240,0.6);
+
+}
+
+/* click effect */
+
+.auth-btn:active{
+
+transform:scale(0.96);
+
+}
+/* switch */
+
+.switch-text{
+
+margin-top:18px;
+color:#aaa;
+
+}
+
+.switch-text a{
+
+color:#7f5af0;
+text-decoration:none;
+
+}
