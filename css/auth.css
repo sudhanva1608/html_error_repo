@@ -5,18 +5,19 @@ box-sizing:border-box;
 font-family:'Poppins',sans-serif;
 }
 
+html{
+scroll-behavior:smooth;
+}
+
 body{
-
-height:100vh;
-
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-
 background:radial-gradient(circle at top,#1a1a2e,#0f0f1a);
-
 overflow:hidden;
-
+position:relative;
+padding:24px;
 }
 
 /* animated gradient background */
@@ -80,23 +81,15 @@ z-index:2;
 /* glass card */
 
 .auth-card{
-
 width:360px;
-
+max-width:100%;
 padding:40px;
-
 border-radius:20px;
-
 background:rgba(255,255,255,0.06);
-
 backdrop-filter:blur(16px);
-
 border:1px solid rgba(255,255,255,0.08);
-
 text-align:center;
-
 animation:fadeIn 0.8s ease;
-
 }
 
 @keyframes fadeIn{
@@ -114,22 +107,15 @@ transform:translateY(0);
 }
 
 .auth-card h2{
-
 margin-bottom:10px;
-
 font-size:28px;
-
 background:linear-gradient(90deg,#7f5af0,#00c6ff,#2cb67d);
-
 background-size:200%;
-
 background-clip:text;
 -webkit-background-clip:text;
-
 color:transparent;
-
+-webkit-text-fill-color:transparent;
 animation:titleGradient 6s linear infinite;
-
 }
 @keyframes titleGradient{
 
@@ -160,23 +146,16 @@ margin-bottom:24px;
 }
 
 .input-group input{
-
 width:100%;
-
 padding:14px 14px;
-
 border:none;
-
 border-radius:10px;
-
 background:rgba(255,255,255,0.08);
-
 color:white;
-
 font-size:15px;
-
 outline:none;
-
+border:1px solid transparent;
+transition:border-color 0.25s ease, box-shadow 0.25s ease;
 }
 
 /* label position */
@@ -204,16 +183,16 @@ background:transparent;
 
 .input-group input:focus + label,
 .input-group input:not(:placeholder-shown) + label{
-
 top:-10px;
-
 left:4px;
-
 font-size:12px;
-
 color:#7f5af0;
 box-shadow:0 0 10px rgba(127,90,240,0.5);
+}
 
+.input-group input:focus{
+border-color:rgba(0,198,255,0.6);
+box-shadow:0 0 0 3px rgba(0,198,255,0.12);
 }
 /* button */
 
@@ -281,8 +260,19 @@ color:#aaa;
 }
 
 .switch-text a{
-
 color:#7f5af0;
 text-decoration:none;
+}
 
+.auth-btn:focus-visible,
+.switch-text a:focus-visible,
+.input-group input:focus-visible{
+outline:2px solid #00c6ff;
+outline-offset:3px;
+}
+
+@media (max-width: 480px){
+.auth-card{
+padding:32px 20px;
+}
 }
