@@ -11,40 +11,38 @@
 <div class="auth-container">
 <div class="auth-card">
 <h2>Create Account</h2>
-
 <p>Start your mental wellness journey</p>
 
+<form id="registerForm" novalidate>
 <div class="input-group">
-<input type="text" id="firstName" placeholder=" " required>
-<label>First Name</label>
+<input type="text" id="firstName" placeholder=" " autocomplete="given-name" required>
+<label for="firstName">First Name</label>
 </div>
 
 <div class="input-group">
-<input type="text" id="lastName" placeholder=" " required>
-<label>Last Name</label>
+<input type="text" id="lastName" placeholder=" " autocomplete="family-name" required>
+<label for="lastName">Last Name</label>
 </div>
 
 <div class="input-group">
-<input type="email" id="email" placeholder=" " required>
-<label>Email Address</label>
+<input type="email" id="email" placeholder=" " autocomplete="email" required>
+<label for="email">Email Address</label>
 </div>
 
 <div class="input-group">
-<input type="password" id="password" placeholder=" " required>
-<label>Create Password</label>
+<input type="password" id="password" placeholder=" " autocomplete="new-password" minlength="6" required>
+<label for="password">Create Password</label>
 </div>
 
-<button class="auth-btn" onclick="registerUser()">
-Register
-</button>
+<button class="auth-btn" type="submit">Register</button>
+</form>
 
 <p class="switch-text">
 Already have an account?
 <a href="login.html">Login</a>
 </p>
-
 </div>
 </div>
-<script src="js/script.js"></script>
+<script src="js/script.js" defer></script>
 </body>
 </html>

@@ -11,30 +11,28 @@
 <div class="auth-container">
 <div class="auth-card">
 <h2>Welcome Back</h2>
-
 <p>Login to continue your mental health journey</p>
 
+<form id="loginForm" novalidate>
 <div class="input-group">
-<input type="email" id="loginEmail" placeholder=" " required>
-<label>Email Address</label>
+<input type="email" id="loginEmail" placeholder=" " autocomplete="email" required>
+<label for="loginEmail">Email Address</label>
 </div>
 
 <div class="input-group">
-<input type="password" id="loginPassword" placeholder=" " required>
-<label>Password</label>
+<input type="password" id="loginPassword" placeholder=" " autocomplete="current-password" required>
+<label for="loginPassword">Password</label>
 </div>
 
-<button class="auth-btn" onclick="loginUser()">
-<span>Login</span>
-</button>
+<button class="auth-btn" type="submit"><span>Login</span></button>
+</form>
 
 <p class="switch-text">
 Don't have an account?
 <a href="register.html">Register</a>
 </p>
-
 </div>
 </div>
-<script src="js/script.js"></script>
+<script src="js/script.js" defer></script>
 </body>
 </html>

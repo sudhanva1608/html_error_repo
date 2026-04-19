@@ -9,19 +9,15 @@
 </head>
 <body>
 <div class="test-wrapper">
-<div class="progress-bar">
-<div id="progress"></div>
+<div class="progress-bar" aria-label="Assessment progress">
+<div id="progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"></div>
 </div>
 
 <div class="question-card">
-
-<h2 id="questionText"></h2>
-
+<h2 id="questionText" aria-live="polite"></h2>
 <div id="optionsContainer"></div>
-
 </div>
-
 </div>
-<script src="js/test.js"></script>
+<script src="js/test.js" defer></script>
 </body>
 </html>

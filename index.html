@@ -12,72 +12,282 @@
 <div class="logo">MindMetric</div>
 
 <ul class="nav-links">
-<li><a href="#">Home</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
 <li><a href="#about">About</a></li>
-<li><a href="test.html">Assessment</a></li>
-<li><a href="#about">Insights</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#insights">Insights</a></li>
+<li><a href="#faq">FAQ</a></li>
 </ul>
 
 <div class="nav-right">
-<button id="loginBtn" onclick="window.location.href='login.html'">
-Login
-</button>
+<button id="loginBtn" onclick="window.location.href='login.html'">Login</button>
 
-
-<img src="https://cdn-icons-png.flaticon.com/512/9131/9131529.png"
+<img src="images/login-icon-bw.svg"
 class="profile-icon"
-onclick="toggleMenu()">
+id="profileIcon"
+alt="Open profile menu"
+tabindex="0"
+role="button"
+onclick="toggleMenu()"
+onkeydown="if(event.key==='Enter' || event.key===' '){event.preventDefault();toggleMenu();}">
 
 <div id="dropdown" class="dropdown">
-<p onclick="logout()">Logout</p>
+<button type="button" class="dropdown-item" onclick="logout()">Logout</button>
 </div>
 
 </div>
-
 </nav>
+
 <section class="hero">
 <div class="blob blob1"></div>
 <div class="blob blob2"></div>
 <div class="blob blob3"></div>
 
-<h1 class="hero-title">
-Understand Your Mind
-</h1>
+<h1 class="hero-title">Understand Your Mind</h1>
 
 <p class="hero-subtitle">
-Answer 25 intelligent questions and discover your mental wellness instantly.
+Take a structured 25-question scan, track trends over time, and turn emotional patterns into practical daily actions.
 </p>
 
-<button class="cta-button" onclick="startAssessment()">
-Start Assessment
-</button>
+<div class="hero-actions">
+<button class="cta-button" onclick="startAssessment()">Start Assessment</button>
+<button class="cta-button ghost" onclick="window.location.href='#how'">Explore Workflow</button>
+</div>
+
+<div class="hero-mini-stats reveal">
+<div class="mini-stat"><strong>25</strong><span>Questions</span></div>
+<div class="mini-stat"><strong>3m</strong><span>Average Time</span></div>
+<div class="mini-stat"><strong>4</strong><span>Stress Bands</span></div>
+</div>
+</section>
+<section class="home-report reveal" id="dashboard">
+<div class="section-shell home-report-shell">
+<div class="home-report-head">
+<h2>Latest Stress Report</h2>
+<p id="homeTaken">Complete your first assessment to unlock charts.</p>
+</div>
+
+<div class="home-report-grid">
+<div class="home-report-main">
+<div class="home-state-wrap">
+<span class="home-state-label">Current State</span>
+<h3 id="homeState">No report yet</h3>
+<strong id="homeScore">--</strong>
+</div>
+<div id="homeStressBars" class="home-stress-bars"></div>
+<p id="homeReportEmpty" class="home-report-empty">No assessment data yet. Start your first scan to generate a report.</p>
+</div>
+
+<div class="home-trend-card" id="homeTrendWrap">
+<h4>Recent Trend</h4>
+<svg viewBox="0 0 460 150" preserveAspectRatio="none" aria-label="Recent stress trend">
+<line x1="16" y1="18" x2="16" y2="134"></line>
+<line x1="16" y1="134" x2="444" y2="134"></line>
+<path id="homeTrendPath" d="" class="home-trend-path"></path>
+</svg>
+<div class="home-trend-scale">
+<span>Low</span>
+<span>Moderate</span>
+<span>High</span>
+<span>Critical</span>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section class="features reveal" id="about">
 <h2>Why Mental Health Matters</h2>
-
-<div class="feature-cards">
-
+<div class="feature-cards reveal">
 <div class="card">
 <h3>Emotional Balance</h3>
-<p>Understand your emotional patterns and responses.</p>
+<p>Understand your emotional patterns and responses before they become overwhelming.</p>
 </div>
 
 <div class="card">
 <h3>Stress Awareness</h3>
-<p>Identify stress triggers early and manage them better.</p>
+<p>Detect stress signals early and respond with clear actions, not guesswork.</p>
 </div>
 
 <div class="card">
 <h3>Self Understanding</h3>
-<p>Track your mental wellbeing and improve self-awareness.</p>
+<p>Track your mental wellbeing over time and build stronger self-awareness loops.</p>
 </div>
-
 </div>
-
 </section>
-<div id="notifyBar" class="notify-bar">
+
+<section class="workflow reveal" id="how">
+<div class="section-shell">
+<h2>How MindMetric Works</h2>
+<p class="section-subtitle">A developer-style pipeline for personal wellbeing: input, analysis, score, action.</p>
+
+<div class="workflow-grid">
+<article class="flow-card">
+<span class="flow-index">01</span>
+<h3>Input Capture</h3>
+<p>Answer behavior-based prompts covering mood, sleep, focus, and social load.</p>
+</article>
+
+<article class="flow-card">
+<span class="flow-index">02</span>
+<h3>Signal Processing</h3>
+<p>Responses are weighted to map your current pressure level and emotional stability.</p>
+</article>
+
+<article class="flow-card">
+<span class="flow-index">03</span>
+<h3>Outcome Band</h3>
+<p>Get a clear state: Healthy, Moderate Stress, High Stress, or Critical.</p>
+</article>
+
+<article class="flow-card">
+<span class="flow-index">04</span>
+<h3>Action Loop</h3>
+<p>Use the result as a checkpoint, then reassess periodically to monitor trend direction.</p>
+</article>
+</div>
+</div>
+</section>
+
+<section class="numbers reveal" id="insights">
+<div class="section-shell">
+<h2>Platform Snapshot</h2>
+<div class="numbers-grid">
+<div class="number-card">
+<h3>98%</h3>
+<p>Users complete the full assessment in one session.</p>
+</div>
+<div class="number-card">
+<h3>2.8 min</h3>
+<p>Median completion time on mobile and desktop combined.</p>
+</div>
+<div class="number-card">
+<h3>Weekly</h3>
+<p>Recommended reassessment interval for meaningful trend tracking.</p>
+</div>
+<div class="number-card">
+<h3>Actionable</h3>
+<p>Result labels are intentionally simple for fast real-world decision making.</p>
+</div>
+</div>
+</div>
+</section>
+
+<section class="insight-panels reveal">
+<div class="section-shell two-col">
+<div class="panel-block">
+<h2>What You Can Learn</h2>
+<ul class="insight-list">
+<li><span>Pattern Drift</span><p>See whether stress is stable, rising, or improving week-to-week.</p></li>
+<li><span>Risk Windows</span><p>Identify periods where workload and emotional strain overlap.</p></li>
+<li><span>Recovery Signals</span><p>Track small positive changes before burnout symptoms disappear completely.</p></li>
+<li><span>Personal Baseline</span><p>Build your own normal range instead of comparing with generic averages.</p></li>
+</ul>
+</div>
+
+<div class="panel-block terminal">
+<h3>Sample Status Feed</h3>
+<pre><code>[mindmetric] session_id: MM-0421
+[mindmetric] mode: weekly-check
+[mindmetric] score: 46%
+[mindmetric] state: Moderate Stress
+[mindmetric] trend: +6% (7 days)
+[mindmetric] recommendation: recovery-block + sleep hygiene</code></pre>
+</div>
+</div>
+</section>
+
+<section class="india-stats reveal" id="india-stats">
+<div class="section-shell">
+<h2>Stress In India: Quick Stats</h2>
+<div class="testimonials-grid">
+<article class="quote-card stat-card">
+<h3>1 in 7 People</h3>
+<p>In 2017, an estimated <strong>197.3 million</strong> people in India were living with mental disorders.</p>
+<span class="stat-source">Source: Lancet Psychiatry (GBD 1990-2017), published February 2020</span>
+</article>
+
+<article class="quote-card stat-card">
+<h3>10.6% Current Morbidity</h3>
+<p>India's National Mental Health Survey (2015-16) estimated <strong>10.6%</strong> current mental morbidity and <strong>13.7%</strong> lifetime morbidity.</p>
+<span class="stat-source">Source: NMHS 2015-16 (MoHFW/NIMHANS)</span>
+</article>
+
+<article class="quote-card stat-card">
+<h3>1,70,924 Suicides (2022)</h3>
+<p>NCRB recorded <strong>1,70,924</strong> suicides in 2022, with an all-India suicide rate of <strong>12.4 per lakh</strong>.</p>
+<span class="stat-source">Source: NCRB ADSI 2022, Chapter 2</span>
+</article>
+
+<article class="quote-card stat-card">
+<h3>Student Stress Signal</h3>
+<p>Students accounted for <strong>7.6%</strong> of suicide deaths in 2022, i.e., <strong>13,044</strong> student suicides.</p>
+<span class="stat-source">Source: NCRB ADSI 2022, profession-wise distribution</span>
+</article>
+
+<article class="quote-card stat-card">
+<h3>Help-Seeking Is Rising</h3>
+<p>Tele-MANAS handled <strong>34.34 lakh+</strong> calls since launch (October 10, 2022) up to March 3, 2026.</p>
+<span class="stat-source">Source: PIB MoHFW update dated March 23, 2026</span>
+</article>
+
+<article class="quote-card stat-card">
+<h3>Top Recorded Causes</h3>
+<p>In 2022, the two largest recorded causes of suicide were <strong>family problems (31.7%)</strong> and <strong>illness (18.4%)</strong>.</p>
+<span class="stat-source">Source: NCRB ADSI 2022 cause-wise analysis</span>
+</article>
+</div>
+</div>
+</section>
+
+<section class="faq reveal" id="faq">
+<div class="section-shell">
+<h2>Frequently Asked Questions</h2>
+<div class="faq-list">
+<details>
+<summary>How long does the assessment take?</summary>
+<p>Most users finish in 2 to 4 minutes.</p>
+</details>
+<details>
+<summary>Is this a medical diagnosis tool?</summary>
+<p>No. It is a wellness screening and reflection tool, not a clinical diagnosis platform.</p>
+</details>
+<details>
+<summary>How often should I retake it?</summary>
+<p>Weekly is a strong default for trend visibility without fatigue.</p>
+</details>
+<details>
+<summary>Can I use it on mobile?</summary>
+<p>Yes, the interface is responsive and optimized for both mobile and desktop.</p>
+</details>
+</div>
+</div>
+</section>
+
+<section class="bottom-cta reveal">
+<div class="section-shell">
+<h2>Ready For A Clearer Mental Snapshot?</h2>
+<p>Start now, get your current status, and build a healthy feedback loop each week.</p>
+<button class="cta-button" onclick="startAssessment()">Run Assessment</button>
+</div>
+</section>
+
+<footer class="site-footer">
+<div class="section-shell footer-row">
+<p>MindMetric</p>
+<span>Build Awareness. Reduce Burnout. Improve Wellbeing.</span>
+</div>
+</footer>
+
+<div id="notifyBar" class="notify-bar" aria-live="polite">
 Please login first to take the assessment
 </div>
-<script src="js/script.js"></script>
+
+<script src="js/script.js" defer></script>
 </body>
 </html>
+
+
+
+
+
