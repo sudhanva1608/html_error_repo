@@ -248,6 +248,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const profileIcon = document.getElementById("profileIcon");
   const dropdown = document.getElementById("dropdown");
   const navbar = document.querySelector(".navbar");
+  const navToggle = document.getElementById("navToggle");
+  const navMenu = document.getElementById("navMenu");
   const button = document.querySelector(".cta-button");
   const loginForm = document.getElementById("loginForm");
   const registerForm = document.getElementById("registerForm");
@@ -305,6 +307,30 @@ document.addEventListener("DOMContentLoaded", () => {
     document.addEventListener("click", (event) => {
       if (!profileIcon.contains(event.target) && !dropdown.contains(event.target)) {
         dropdown.style.display = "none";
+      }
+    });
+  }
+
+  if (navToggle && navbar && navMenu) {
+    navToggle.addEventListener("click", () => {
+      const isOpen = navbar.classList.toggle("menu-open");
+      navToggle.setAttribute("aria-expanded", String(isOpen));
+    });
+
+    const navMenuLinks = navMenu.querySelectorAll("a");
+    navMenuLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        if (navbar.classList.contains("menu-open")) {
+          navbar.classList.remove("menu-open");
+          navToggle.setAttribute("aria-expanded", "false");
+        }
+      });
+    });
+
+    document.addEventListener("click", (event) => {
+      if (!navbar.contains(event.target) && navbar.classList.contains("menu-open")) {
+        navbar.classList.remove("menu-open");
+        navToggle.setAttribute("aria-expanded", "false");
       }
     });
   }
