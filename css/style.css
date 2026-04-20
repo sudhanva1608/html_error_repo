@@ -161,6 +161,18 @@ body::after {
   gap: 14px;
 }
 
+.nav-toggle {
+  display: none;
+  border: 1px solid var(--line-strong);
+  background: #0b1628;
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+}
+
 #loginBtn {
   padding: 10px 18px;
   border: 1px solid var(--line-strong);
@@ -1777,6 +1789,34 @@ video {
   color: var(--muted);
   font-size: 12px;
   line-height: 1.5;
+}
+
+/* Desktop lock: prevent mobile menu styles leaking to laptop screens */
+@media (min-width: 769px) {
+  .nav-toggle {
+    display: none !important;
+  }
+
+  .navbar {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+  }
+
+  .nav-links {
+    display: flex !important;
+    position: static !important;
+    width: auto !important;
+    flex-direction: row !important;
+    gap: 24px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    overflow: visible !important;
+  }
 }
 
 
