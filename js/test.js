@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "http://localhost:8080";
 const REPORT_STORAGE_KEY = "mindmetricReports";
 
 const userId = localStorage.getItem("userId");
@@ -354,5 +354,8 @@ function animateScore(target) {
     }
   }, 20);
 }
+
+
+
 
 

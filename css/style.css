@@ -24,6 +24,9 @@
 
 html {
   scroll-behavior: smooth;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -36,6 +39,8 @@ body {
   overflow-x: hidden;
   animation: pageFade 0.5s ease;
   position: relative;
+  width: 100%;
+  max-width: 100%;
 }
 
 body::before {
@@ -230,6 +235,7 @@ body::after {
 .hero {
   min-height: 100vh;
   width: 100%;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -870,6 +876,7 @@ body::after {
 
 .section-shell {
   width: min(1160px, 100%);
+  max-width: 100%;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -1615,38 +1622,60 @@ body::after {
 }
 
 @media (max-width: 768px) {
+  .navbar,
+  .hero,
+  .features,
+  .section-shell,
+  .home-report-shell,
+  .home-report-grid,
+  .result-summary-grid,
+  .trend-card,
+  .result-container,
+  .test-wrapper,
+  .question-card {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
   .nav-toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    grid-area: toggle;
-    justify-self: center;
+    order: 2;
+    margin-left: auto;
+    margin-right: 8px;
   }
 
   .navbar {
-    display: grid;
-    grid-template-columns: 1fr auto auto;
-    grid-template-areas:
-      "logo toggle actions"
-      "menu menu menu";
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    row-gap: 10px;
-    column-gap: 10px;
+    gap: 8px;
     padding: 12px;
+    left: 0;
+    right: 0;
+    width: 100%;
   }
 
   .logo {
-    grid-area: logo;
+    order: 1;
     font-size: 17px;
+    max-width: calc(100% - 120px);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   .nav-right {
-    grid-area: actions;
-    justify-self: end;
+    order: 3;
+    margin-left: 0;
+    justify-content: flex-end;
+    min-width: auto;
   }
 
   .nav-links {
-    grid-area: menu;
+    order: 4;
     display: none;
     width: 100%;
     flex-direction: column;
@@ -1679,6 +1708,7 @@ body::after {
   #loginBtn {
     padding: 8px 12px;
     font-size: 11px;
+    white-space: nowrap;
   }
 
   .hero {

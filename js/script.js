@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5000";
+const API_BASE_URL = "http://localhost:8080";
 const REPORT_STORAGE_KEY = "mindmetricReports";
 
 async function parseJsonResponse(response) {
@@ -11,7 +11,7 @@ async function parseJsonResponse(response) {
   }
 
   if (!response.ok) {
-    const message = payload && payload.message ? payload.message : "Request failed.";
+    const message = payload && payload.message ? payload.message : `Request failed (HTTP ${response.status}).`;
     throw new Error(message);
   }
 
@@ -424,3 +424,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   handleScrollFrame();
 });
+fetch(`${API_BASE_URL}/api/users`)
+  .then(res => res.json())
+  .then(data => console.log(data))
+  .catch(err => console.error(err));
+
+
+
