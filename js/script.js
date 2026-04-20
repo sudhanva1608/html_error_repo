@@ -1,5 +1,62 @@
 const API_BASE_URL = "http://localhost:8080";
 const REPORT_STORAGE_KEY = "mindmetricReports";
+const FLASH_TOAST_KEY = "mindmetricFlashToast";
+
+function showToast(message, type = "info", duration = 2600) {
+  if (!document || !document.body) {
+    return;
+  }
+
+  let container = document.querySelector(".app-toast-container");
+  if (!container) {
+    container = document.createElement("div");
+    container.className = "app-toast-container";
+    document.body.appendChild(container);
+  }
+
+  const toast = document.createElement("div");
+  toast.className = `app-toast ${type}`;
+  toast.textContent = message;
+  container.appendChild(toast);
+
+  requestAnimationFrame(() => {
+    toast.classList.add("show");
+  });
+
+  setTimeout(() => {
+    toast.classList.remove("show");
+    setTimeout(() => {
+      toast.remove();
+      if (!container.children.length) {
+        container.remove();
+      }
+    }, 260);
+  }, duration);
+}
+
+function setFlashToast(message, type = "success") {
+  try {
+    sessionStorage.setItem(FLASH_TOAST_KEY, JSON.stringify({ message, type }));
+  } catch (_error) {
+    // Ignore storage failures and continue.
+  }
+}
+
+function consumeFlashToast() {
+  try {
+    const raw = sessionStorage.getItem(FLASH_TOAST_KEY);
+    if (!raw) {
+      return;
+    }
+    sessionStorage.removeItem(FLASH_TOAST_KEY);
+    const parsed = JSON.parse(raw);
+    if (parsed && parsed.message) {
+      showToast(parsed.message, parsed.type || "success");
+    }
+  } catch (_error) {
+    // Ignore malformed payloads.
+  }
+}
 
 async function parseJsonResponse(response) {
   let payload = null;
@@ -34,12 +91,12 @@ async function registerUser() {
   const password = passwordInput.value;
 
   if (!firstName || !lastName || !email || !password) {
-    alert("Please fill in all fields.");
+    showToast("Please fill in all fields.", "warning");
     return;
   }
 
   if (password.length < 6) {
-    alert("Password must be at least 6 characters.");
+    showToast("Password must be at least 6 characters.", "warning");
     return;
   }
 
@@ -58,11 +115,11 @@ async function registerUser() {
     });
 
     const data = await parseJsonResponse(response);
-    alert(data.message || "Registration completed.");
+    setFlashToast(data.message || "Registration completed. Please login.", "success");
     window.location.href = "login.html";
   } catch (error) {
     console.error("Registration error:", error);
-    alert(error.message || "Registration failed. Please try again.");
+    showToast(error.message || "Registration failed. Please try again.", "error");
   }
 }
 
@@ -78,7 +135,7 @@ async function loginUser() {
   const password = passwordInput.value;
 
   if (!email || !password) {
-    alert("Please enter email and password.");
+    showToast("Please enter email and password.", "warning");
     return;
   }
 
@@ -101,11 +158,11 @@ async function loginUser() {
       localStorage.setItem("userId", String(userId));
     }
 
-    alert(data.message || "Login successful.");
+    setFlashToast(data.message || "Login successful.", "success");
     window.location.href = "index.html";
   } catch (error) {
     console.error("Login error:", error);
-    alert(error.message || "Login failed. Please try again.");
+    showToast(error.message || "Login failed. Please try again.", "error");
   }
 }
 
@@ -122,7 +179,7 @@ function startAssessment() {
         window.location.href = "login.html";
       }, 2000);
     } else {
-      alert("Please login first");
+      showToast("Please login first", "warning");
       window.location.href = "login.html";
     }
 
@@ -431,3 +488,4 @@ fetch(`${API_BASE_URL}/api/users`)
 
 
 
+  consumeFlashToast();
